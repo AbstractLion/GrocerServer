@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+# Created by https://www.gitignore.io/api/node
+# Edit at https://www.gitignore.io/?templates=node
+
+### Node ###
+>>>>>>> a5c4ad5e05e5d6cb70a42b39dd847dac82793d25
 # Logs
 logs
 *.log
@@ -41,8 +48,13 @@ build/Release
 node_modules/
 jspm_packages/
 
+<<<<<<< HEAD
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
+=======
+# TypeScript v1 declaration files
+typings/
+>>>>>>> a5c4ad5e05e5d6cb70a42b39dd847dac82793d25
 
 # TypeScript cache
 *.tsbuildinfo
@@ -53,12 +65,15 @@ web_modules/
 # Optional eslint cache
 .eslintcache
 
+<<<<<<< HEAD
 # Microbundle cache
 .rpt2_cache/
 .rts2_cache_cjs/
 .rts2_cache_es/
 .rts2_cache_umd/
 
+=======
+>>>>>>> a5c4ad5e05e5d6cb70a42b39dd847dac82793d25
 # Optional REPL history
 .node_repl_history
 
@@ -74,6 +89,7 @@ web_modules/
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
+<<<<<<< HEAD
 .parcel-cache
 
 # Next.js build output
@@ -89,6 +105,27 @@ dist
 # https://nextjs.org/blog/next-9-1#public-directory-support
 # public
 
+=======
+
+# next.js build output
+.next
+
+# nuxt.js build output
+.nuxt
+
+# rollup.js default build output
+dist/
+
+# Uncomment the public line if your project uses Gatsby
+# https://nextjs.org/blog/next-9-1#public-directory-support
+# https://create-react-app.dev/docs/using-the-public-folder/#docsNav
+# public
+
+# Storybook build outputs
+.out
+.storybook-out
+
+>>>>>>> a5c4ad5e05e5d6cb70a42b39dd847dac82793d25
 # vuepress build output
 .vuepress/dist
 
@@ -101,6 +138,7 @@ dist
 # DynamoDB Local files
 .dynamodb/
 
+<<<<<<< HEAD
 # TernJS port file
 .tern-port
 
@@ -113,3 +151,10 @@ dist
 .yarn/unplugged
 .yarn/build-state.yml
 .pnp.*
+=======
+# Temporary folders
+tmp/
+temp/
+
+# End of https://www.gitignore.io/api/node
+>>>>>>> a5c4ad5e05e5d6cb70a42b39dd847dac82793d25
