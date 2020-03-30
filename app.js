@@ -21,4 +21,9 @@ app.post('/items', postItems);
 const getItems = require('./controllers/items/get');
 app.get('/items', getItems);
 
+const activateList = require('./controllers/lists/activate');
+app.post('/lists/:qrCode/activate', activateList);
+
+
+
 module.exports = app;

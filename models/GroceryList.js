@@ -2,10 +2,20 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const GroceryListSchema = new Schema({
-  qrCode: String,
-  author: String,
+  qrCode: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  author: {
+    type: String
+  },
   storeId: Number,
   createdAt: Date,
+  activated: {
+    type: Boolean,
+    default: false
+  },
   items: {
     type: [Schema.Types.ObjectId],
     ref: 'GroceryItem'
