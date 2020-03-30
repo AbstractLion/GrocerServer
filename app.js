@@ -2,14 +2,13 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
 const mongoose = require('mongoose');
+const port = process.env.PORT || 3000;
 
 mongoose.connect(`mongodb+srv://grocer:${process.env.DB_PASSWORD}@grocer-7esjj.mongodb.net/test`, {useNewUrlParser: true});
 
 const app = express();
 
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -23,5 +22,7 @@ app.get('/items', getItems);
 
 const activateList = require('./controllers/lists/activate');
 app.post('/lists/:qrCode/activate', activateList);
+
+app.listen(port, () => console.log('Listening on port '+ port));
 
 module.exports = app;
