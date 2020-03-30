@@ -1,5 +1,5 @@
 const GroceryItem = require('../../models/GroceryItem');
-const to = require('await-to-js');
+const to = require('await-to-js').default;
 
 module.exports = async (req, res) => {
   const [findErr, findRes] = await to(GroceryItem.find({
