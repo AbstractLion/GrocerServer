@@ -18,4 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const postItems = require('./controllers/items/post');
 app.post('/items', postItems);
 
+const getItems = require('./controllers/items/get');
+app.get('/items', getItems);
+
 module.exports = app;

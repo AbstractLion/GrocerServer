@@ -6,7 +6,10 @@ const GroceryListSchema = new Schema({
   author: String,
   storeId: Number,
   createdAt: Date,
-  items: [Schema.Types.ObjectId]
+  items: {
+    type: [Schema.Types.ObjectId],
+    ref: 'GroceryItem'
+  }
 });
 
 const GroceryList = mongoose.model('GroceryList', GroceryListSchema);
