@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
-mongoose.connect(`mongodb+srv://leonzalion:${process.env.DB_PASSWORD}@grocer-7esjj.mongodb.net/test`, {useNewUrlParser: true});
+mongoose.connect(`mongodb+srv://grocer:${process.env.DB_PASSWORD}@grocer-7esjj.mongodb.net/test`, {useNewUrlParser: true});
 
 const app = express();
 
@@ -23,7 +23,5 @@ app.get('/items', getItems);
 
 const activateList = require('./controllers/lists/activate');
 app.post('/lists/:qrCode/activate', activateList);
-
-
 
 module.exports = app;

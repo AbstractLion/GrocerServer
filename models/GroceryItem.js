@@ -2,10 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const GroceryItemSchema = new Schema({
-  title: String,
+  name: String,
   rating: Number,
   price: Number,
-  imageUrl: String
+  imageUrl: String,
+  link: String
 });
 
 const GroceryItem = mongoose.model('GroceryItem', GroceryItemSchema);
