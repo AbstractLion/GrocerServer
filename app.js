@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const port = process.env.PORT || 3000;
 
-mongoose.connect(`mongodb+srv://grocer:${process.env.DB_PASSWORD}@grocer-7esjj.mongodb.net/test`, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(`mongodb+srv://grocer:${process.env.DB_PASSWORD}@grocer-7esjj.mongodb.net/test`, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 
 const app = express();
 
