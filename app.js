@@ -23,6 +23,9 @@ app.get('/items', getItems);
 const activateList = require('./controllers/lists/activate');
 app.post('/lists/:qrCode/activate', activateList);
 
+const getLists = require('./controllers/lists/get');
+app.get('/lists', getLists);
+
 app.get('/', (req, res) => res.json({dragon: 'fruit'}));
 
 app.listen(port, () => console.log('Listening on port '+ port));
