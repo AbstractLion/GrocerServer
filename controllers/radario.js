@@ -1,4 +1,4 @@
 module.exports = async (req, res) => {
-  console.log(req);
+  console.log(JSON.stringify(req.body));
   res.json({message: 'works'});
 };
