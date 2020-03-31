@@ -30,7 +30,10 @@ const postLists = require('./controllers/lists/post');
 app.post('/lists', postLists);
 
 const getStores = require('./controllers/stores/get');
-app.get('/stores/');
+app.get('/stores');
+
+const radario = require('./controllers/radario');
+app.post('/radario');
 
 app.get('/', (req, res) => res.json({dragon: 'fruit'}));
 

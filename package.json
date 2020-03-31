@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "push": "git add .; git commit -m 'made changes'; git push",
+    "deploy": "git push heroku master"
   },
   "dependencies": {
     "await-to-js": "^2.1.1",
