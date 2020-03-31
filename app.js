@@ -26,8 +26,11 @@ app.post('/lists/:qrCode/activate', activateList);
 const getLists = require('./controllers/lists/get');
 app.get('/lists', getLists);
 
+const postLists = require('./controllers/lists/post');
+app.post('/lists', postLists);
+
 const getStores = require('./controllers/stores/get');
-app.get('/stores/')
+app.get('/stores/');
 
 app.get('/', (req, res) => res.json({dragon: 'fruit'}));
 
