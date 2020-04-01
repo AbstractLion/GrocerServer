@@ -4,11 +4,11 @@ const to = require('await-to-js').default;
 let expo = new Expo();
 
 module.exports = async (req, res) => {
-  const [findErr, findRes] = await to(User.find({radarId: req.body.user._id}).exec());
+  const [findErr, findRes] = await to(User.findOne({radarId: req.body.user._id}).exec());
   if (findErr) return res.status(400).json(findErr);
+
   let messages = [];
   const pushToken = findRes.pushToken;
-
   if (!Expo.isExpoPushToken(pushToken)) {
     console.error(`Push token ${pushToken} is not a valid Expo push token`);
     return res.status(400).json({message: 'Invalid push token.'});
