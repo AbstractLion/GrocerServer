@@ -4,8 +4,6 @@ const to = require('await-to-js').default;
 let expo = new Expo();
 
 module.exports = async (req, res) => {
-  console.log(req.body);
-  return res.json({hi: 'hi'});
   const [findErr, findRes] = await to(User.find({radarId: req.body.user._id}).exec());
   if (findErr) return res.status(400).json(findErr);
   let messages = [];
