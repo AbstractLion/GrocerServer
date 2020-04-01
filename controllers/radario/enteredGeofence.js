@@ -7,18 +7,18 @@ module.exports = async (req, res) => {
   const [findErr, findRes] = await to(User.find({radarId: req.body.user._id}).exec());
   if (findErr) return res.status(400).json(findErr);
   let messages = [];
-  for (let pushToken of findRes.pushTokens) {
-    if (!Expo.isExpoPushToken(pushToken)) {
-      console.error(`Push token ${pushToken} is not a valid Expo push token`);
-      continue;
-    }
+  const pushToken = findRes.pushToken;
 
-    messages.push({
-      to: pushToken,
-      sound: 'default',
-      body: "This store supports Grocer! Collect somebody's groceries to gain Grocer points which you can redeem for discounts!",
-    });
+  if (!Expo.isExpoPushToken(pushToken)) {
+    console.error(`Push token ${pushToken} is not a valid Expo push token`);
+    return res.status(400).json({message: 'Invalid push token.'});
   }
+
+  messages.push({
+    to: pushToken,
+    sound: 'default',
+    body: "This store supports Grocer! Collect somebody's groceries to gain Grocer points which you can redeem for discounts!",
+  });
 
   let chunks = expo.chunkPushNotifications(messages);
   for (let chunk of chunks) {
