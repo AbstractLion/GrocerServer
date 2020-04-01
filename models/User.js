@@ -11,7 +11,8 @@ const UserSchema = new Schema({
   phoneNumber: String,
   firstName: String,
   lastName: String,
-  timeoutStart: Date
+  timeoutStart: Date,
+  radarId: String
 });
 
 const User = mongoose.model('User', UserSchema);
