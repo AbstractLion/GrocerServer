@@ -35,6 +35,12 @@ app.get('/stores', getStores);
 const radario = require('./controllers/radario');
 app.post('/radario', radario);
 
+const postUser = require('./controllers/users/post');
+app.post('/users', postUser);
+
+const getUser = require('./controllers/users/get');
+app.get('/users/:id', getUser);
+
 app.get('/', (req, res) => res.json({dragon: 'fruit'}));
 
 app.listen(port, () => console.log('Listening on port '+ port));
