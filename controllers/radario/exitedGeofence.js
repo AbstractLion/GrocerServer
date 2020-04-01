@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require('../../models/User');
 const {Expo} = require('expo-server-sdk');
 const to = require('await-to-js').default;
 let expo = new Expo();

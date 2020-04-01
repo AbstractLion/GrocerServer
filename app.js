@@ -32,8 +32,11 @@ app.post('/lists', postLists);
 const getStores = require('./controllers/stores/get');
 app.get('/stores', getStores);
 
-const radario = require('./controllers/radario');
-app.post('/radario', radario);
+const radarioEnteredGeofence = require('./controllers/radario/enteredGeofence');
+app.post('/radario/enteredGeofence', radarioEnteredGeofence);
+
+const radarioExitedGeofence = require('./controllers/radario/exitedGeofence');
+app.post('/radario/exitedGeofence', radarioExitedGeofence);
 
 const postUser = require('./controllers/users/post');
 app.post('/users', postUser);

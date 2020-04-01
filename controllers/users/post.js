@@ -7,7 +7,8 @@ module.exports = async (req, res) => {
     phoneNumber,
     firstName,
     lastName,
-    pushToken
+    role,
+    pushToken,
   } = req.body;
 
   const [createErr, createRes] = await to(User.create({
@@ -15,7 +16,9 @@ module.exports = async (req, res) => {
     phoneNumber,
     firstName,
     lastName,
-    pushToken
+    role,
+    pushToken,
+    radarId: ''
   }));
 
   if (createErr) return res.status(400).json(createErr);
