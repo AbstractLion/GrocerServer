@@ -16,7 +16,10 @@ module.exports = async (req, res) => {
 
   messages.push({
     to: pushToken,
+    title: "Store Support for Grocer!",
     sound: 'default',
+    priority: 'high',
+    channelId: 'notifications',
     body: "This store supports Grocer! Collect somebody's groceries to gain Grocer points which you can redeem for discounts!",
   });
 
@@ -26,6 +29,5 @@ module.exports = async (req, res) => {
     console.log(ticketChunk);
   }
 
-  console.log(JSON.stringify(req.body));
   res.json({message: 'works'});
 };
