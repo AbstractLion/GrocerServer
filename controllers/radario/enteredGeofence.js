@@ -7,14 +7,15 @@ module.exports = async (req, res) => {
   const [findErr, findRes] = await to(User.find({radarId: req.body.user._id}).exec());
   if (findErr) return res.status(400).json(findErr);
 
-  let messages = [];
   for (let user of findRes) {
     let pushToken = user.pushToken;
     if (!pushToken) continue;
     if (!Expo.isExpoPushToken(pushToken)) {
-      console.error(`Push token ${pushToken} is not a valid Expo push token`);
+      console.log(`Push token ${pushToken} is not a valid Expo push token`);
       return res.status(400).json({message: 'Invalid push token.'});
     }
+
+    let messages = [];
 
     messages.push({
       to: pushToken,
@@ -24,12 +25,11 @@ module.exports = async (req, res) => {
       channelId: 'notifications',
       body: "Collect somebody's groceries to gain Grocer points which you can redeem for discounts!",
     });
-  }
 
-  let chunks = expo.chunkPushNotifications(messages);
-  for (let chunk of chunks) {
-    let ticketChunk = await expo.sendPushNotificationsAsync(chunk);
-    console.log(ticketChunk);
+    let chunks = expo.chunkPushNotifications(messages);
+    for (let chunk of chunks) {
+      let ticketChunk = await expo.sendPushNotificationsAsync(chunk);
+    }
   }
 
   res.json({message: 'works'});
