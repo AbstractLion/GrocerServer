@@ -10,6 +10,7 @@ module.exports = async (req, res) => {
   let messages = [];
   for (let user of findRes) {
     let pushToken = user.pushToken;
+    if (!pushToken) continue;
     if (!Expo.isExpoPushToken(pushToken)) {
       console.error(`Push token ${pushToken} is not a valid Expo push token`);
       return res.status(400).json({message: 'Invalid push token.'});
