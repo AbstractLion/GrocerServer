@@ -12,7 +12,8 @@ const UserSchema = new Schema({
   firstName: String,
   lastName: String,
   timeoutStart: Date,
-  radarId: String
+  radarId: String,
+  pushToken: String
 });
 
 const User = mongoose.model('User', UserSchema);
