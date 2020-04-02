@@ -7,8 +7,9 @@ const GroceryListSchema = new Schema({
     required: true,
     unique: true
   },
-  author: {
-    type: String
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   },
   storeId: Number,
   createdAt: Date,

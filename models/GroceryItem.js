@@ -14,7 +14,6 @@ const GroceryItemSchema = new Schema({
     required: true
   },
   link: String,
-  pushTokens: []
 });
 
 const GroceryItem = mongoose.model('GroceryItem', GroceryItemSchema);
