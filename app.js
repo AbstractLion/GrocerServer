@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const port = process.env.PORT || 3000;
 
 mongoose.connect(`mongodb+srv://grocer:${process.env.DB_PASSWORD}@grocer-7esjj.mongodb.net/test`, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
+mongoose.set('useFindAndModify', false);
 
 const app = express();
 
