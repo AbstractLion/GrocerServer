@@ -15,11 +15,11 @@ module.exports = async (req, res) => {
 
     messages.push({
       to: pushToken,
-      title: "You are not done shopping!",
+      title: "You have not fulfilled your grocery list for a requestor!",
       sound: 'default',
       priority: 'high',
       channelId: 'notifications',
-      body: "Talk to one of the store clerks to finish your order.",
+      body: "Either cancel the grocery list or if completed, get it scanned by an employee.",
     });
 
     let chunks = expo.chunkPushNotifications(messages);
