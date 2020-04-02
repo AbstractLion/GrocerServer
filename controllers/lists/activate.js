@@ -32,7 +32,8 @@ module.exports = async(req, res) => {
   });
   let chunks = expo.chunkPushNotifications(messages);
   for (let chunk of chunks) {
-    await expo.sendPushNotificationsAsync(chunk);
+    const ticketChunk = await expo.sendPushNotificationsAsync(chunk);
+    console.log(ticketChunk);
   }
 
   return res.json({ message: "Accepted" });
