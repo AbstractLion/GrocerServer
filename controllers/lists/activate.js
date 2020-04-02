@@ -1,19 +1,39 @@
 const User = require('../../models/User');
 const GroceryList = require('../../models/GroceryList');
 const to = require('await-to-js').default;
+const {Expo} = require('expo-server-sdk');
+let expo = new Expo();
 
 module.exports = async(req, res) => {
-    const { userId, qrCode } = req.body;
-    const [findErr, groceryObject] = await to(GroceryList.findOne({qrCode}).exec());
-    if (findErr) return res.status(400).json(findErr);
-    let activated = groceryObject.activated;
-    if (activated) {
-        return res.json({ message: "Already Accepted" });
-    }
-    groceryObject.activated = true;
-    const [updateErr] = await to(User.findOneAndUpdate({ _id: userId }, { activatedGroceryList: groceryObject._id }).exec());
-    if (updateErr) return res.status(400).json(updateErr);
-    groceryObject.shopper = userId;
-    await groceryObject.save();
-    return res.json({ message: "Accepted" });
+  const { userId, qrCode } = req.body;
+  const [groceryListError, groceryList] = await
+    to(GroceryList.findOne({qrCode}).exec());
+  if (groceryListError) return res.status(400).json(groceryListError);
+  let activated = groceryList.activated;
+  if (activated) {
+    return res.json({ message: "Already Accepted" });
+  }
+  groceryList.activated = true;
+  const [userError, user] = await to(User.findOneAndUpdate(
+    {_id: userId}, {activatedGroceryList: groceryList._id}
+  ).exec());
+  if (userError) return res.status(400).json(userError);
+  groceryList.shopper = userId;
+  await groceryList.save();
+
+  let pushToken = user.pushToken;
+  let messages = [];
+  messages.push({
+    to: pushToken,
+    sound: null,
+    priority: 'normal',
+    channelId: 'activated',
+    ios: {_displayInForeground: false}
+  });
+  let chunks = expo.chunkPushNotifications(messages);
+  for (let chunk of chunks) {
+    await expo.sendPushNotificationsAsync(chunk);
+  }
+
+  return res.json({ message: "Accepted" });
 };
