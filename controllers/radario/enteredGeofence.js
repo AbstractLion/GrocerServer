@@ -4,7 +4,10 @@ const to = require('await-to-js').default;
 let expo = new Expo();
 
 module.exports = async (req, res) => {
-  const [findErr, findRes] = await to(User.find({radarId: req.body.user._id}).exec());
+  const [findErr, findRes] = await to(User.find({
+    radarId: req.body.user._id,
+    role: 'Shopper'
+  }).exec());
   if (findErr) return res.status(400).json(findErr);
 
   for (let user of findRes) {

@@ -26,6 +26,5 @@ module.exports = async (req, res) => {
     console.log(ticketChunk);
   }
 
-  console.log(JSON.stringify(req.body));
   res.json({message: 'works'});
 };
