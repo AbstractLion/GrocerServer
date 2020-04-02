@@ -23,6 +23,9 @@ app.get('/items', getItems);
 const activateList = require('./controllers/lists/activate');
 app.post('/lists/:qrCode/activate', activateList);
 
+const activateList = require('./controllers/lists/complete');
+app.post('/lists/:qrCode/complete', completeList);  
+
 const getLists = require('./controllers/lists/get');
 app.get('/lists', getLists);
 
