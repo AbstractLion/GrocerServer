@@ -21,10 +21,10 @@ const getItems = require('./controllers/items/get');
 app.get('/items', getItems);
 
 const activateList = require('./controllers/lists/activate');
-app.post('/lists/:qrCode/activate', activateList);
+app.post('/lists/activate', activateList);
 
 const activateList = require('./controllers/lists/complete');
-app.post('/lists/:qrCode/complete', completeList);  
+app.post('/lists/complete', completeList);  
 
 const getLists = require('./controllers/lists/get');
 app.get('/lists', getLists);
