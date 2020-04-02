@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
   console.log(itemsArr);
   const [createErr, createRes] = await to(GroceryList.create({
     author, qrCode, itemsArr, createdAt
-  }).exec());
+  }));
   if (createErr) return res.status(400).json(createErr);
   return res.json(createRes);
 };
