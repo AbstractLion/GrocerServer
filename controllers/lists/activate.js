@@ -11,7 +11,7 @@ module.exports = async(req, res) => {
   if (groceryListError) return res.status(400).json(groceryListError);
   let activated = groceryList.activated;
   if (activated) {
-    return res.json({ message: "Already Accepted" });
+    return res.status(300).json({message: "Already Accepted" });
   }
   groceryList.activated = true;
   const [userError, user] = await to(User.findOneAndUpdate(
