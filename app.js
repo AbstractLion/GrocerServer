@@ -23,7 +23,7 @@ app.get('/items', getItems);
 const activateList = require('./controllers/lists/activate');
 app.post('/lists/activate', activateList);
 
-const activateList = require('./controllers/lists/complete');
+const completeList = require('./controllers/lists/complete');
 app.post('/lists/complete', completeList);  
 
 const getLists = require('./controllers/lists/get');
