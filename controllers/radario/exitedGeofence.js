@@ -22,11 +22,12 @@ module.exports = async (req, res) => {
       body: "Talk to one of the store clerks to finish your order.",
     });
 
-  let chunks = expo.chunkPushNotifications(messages);
-  for (let chunk of chunks) {
-    let ticketChunk = await expo.sendPushNotificationsAsync(chunk);
-    console.log(ticketChunk);
-  }
+    let chunks = expo.chunkPushNotifications(messages);
+    for (let chunk of chunks) {
+      let ticketChunk = await expo.sendPushNotificationsAsync(chunk);
+      console.log(ticketChunk);
+    }
 
-  res.json({message: 'works'});
-};
+    res.json({message: 'works'});
+  }
+}
