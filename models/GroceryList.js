@@ -20,6 +20,10 @@ const GroceryListSchema = new Schema({
     type: Boolean,
     default: false
   },
+  shopper: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
   items: [{type: [Schema.Types.ObjectId], ref: 'GroceryItem'}]
 });
 
