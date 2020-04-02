@@ -1,17 +1,16 @@
 const User = require('../../models/User');
-const User = require('../../models/GroceryList');
+const GroceryList = require('../../models/GroceryList');
 const { Expo } = require('expo-server-sdk');
 const to = require('await-to-js').default;
 let expo = new Expo();
 
 module.exports = async(req, res) => {
-    const {qrCode} = req.body
+    const {qrCode} = req.body;
     const [findErr, findRes] = await to(GroceryList.findOne({qrCode}).populate('user').populate('store').exec());
     if (findErr) return res.status(400).json(findErr);
     let user = findRes.user;
     let store = findRes.store;
     let pushToken = user.pushToken;
-
 
     let messages = [];
 

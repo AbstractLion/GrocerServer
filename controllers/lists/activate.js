@@ -1,10 +1,10 @@
 const User = require('../../models/User');
-const User = require('../../models/GroceryList');
+const GroceryList = require('../../models/GroceryList');
 const to = require('await-to-js').default;
 
 module.exports = async(req, res) => {
     const { userId, qrCode } = req.body;
-    const [findErr, groceryObject] = await to(GroceryList.findOne(qrCode).exec());
+    const [findErr, groceryObject] = await to(GroceryList.findOne({qrCode}).exec());
     if (findErr) return res.status(400).json(findErr);
     let activated = groceryObject.activated;
     if (activated) {
