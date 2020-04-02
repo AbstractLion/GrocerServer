@@ -5,7 +5,7 @@ const to = require('await-to-js').default;
 module.exports = async (req, res) => {
   const {author, qrCode, items, createdAt} = req.body;
   let itemsArr = [];
-  for (let item of items) {
+  for (let [key, item] of Object.entries(items)){
     const {title, price, imageUrl, rating} = item;
     const [itemErr, itemRes] = await to(GroceryItem.create({
       title, price, imageUrl, rating
