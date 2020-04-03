@@ -28,6 +28,7 @@ module.exports = async(req, res) => {
     sound: null,
     priority: 'normal',
     channelId: 'activated',
+    data: {isActivation: true, userId},
     ios: {_displayInForeground: false}
   });
   let chunks = expo.chunkPushNotifications(messages);
