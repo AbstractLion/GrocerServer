@@ -9,6 +9,7 @@ const GroceryItemSchema = new Schema({
   rating: Number,
   price: Number,
   imageUrl: String,
+  count: Number,
   storeId: {
     type: Number,
     required: true
