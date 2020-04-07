@@ -9,6 +9,7 @@ module.exports = async (req, res) => {
   }).exec());
   if (findErr) return res.status(400).json(findErr);
 
+  let pushTokens = new Set();
   for (let user of findRes) {
     let pushToken = user.pushToken;
     if (!pushToken) continue;
@@ -16,9 +17,11 @@ module.exports = async (req, res) => {
       console.log(`Push token ${pushToken} is not a valid Expo push token`);
       return res.status(400).json({message: 'Invalid push token.'});
     }
+    pushTokens.add(pushToken);
+  }
 
-    let messages = [];
-
+  let messages = [];
+  for (let token of pushTokens) {
     messages.push({
       to: pushToken,
       title: "This Store Supports Grocer!",
@@ -27,11 +30,11 @@ module.exports = async (req, res) => {
       channelId: 'notifications',
       body: "Collect somebody's groceries to gain Grocer points which you can redeem for discounts!",
     });
+  }
 
-    let chunks = expo.chunkPushNotifications(messages);
-    for (let chunk of chunks) {
-      let ticketChunk = await expo.sendPushNotificationsAsync(chunk);
-    }
+  let chunks = expo.chunkPushNotifications(messages);
+  for (let chunk of chunks) {
+    let ticketChunk = await expo.sendPushNotificationsAsync(chunk);
   }
 
   res.json({message: 'works'});
