@@ -5,6 +5,7 @@ const {Expo} = require('expo-server-sdk');
 let expo = new Expo();
 
 module.exports = async(req, res) => {
+  console.log('activate.js');
   const { userId, qrCode } = req.body;
   const [groceryListError, groceryList] = await
     to(GroceryList.findOne({qrCode}).exec());
