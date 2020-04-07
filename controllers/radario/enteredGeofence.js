@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
   let messages = [];
   for (let token of pushTokens) {
     messages.push({
-      to: pushToken,
+      to: token,
       title: "This Store Supports Grocer!",
       sound: 'default',
       priority: 'high',
