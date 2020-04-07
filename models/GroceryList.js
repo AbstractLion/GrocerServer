@@ -25,8 +25,8 @@ const GroceryListSchema = new Schema({
     ref: 'User'
   },
   items: [{
-    id: {
-      type: [Schema.Types.ObjectId],
+    item: {
+      type: Schema.Types.ObjectId,
       ref: 'GroceryItem'
     },
     count: Number
