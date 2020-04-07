@@ -24,7 +24,13 @@ const GroceryListSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  items: [{type: [Schema.Types.ObjectId], ref: 'GroceryItem'}]
+  items: [{
+    id: {
+      type: [Schema.Types.ObjectId],
+      ref: 'GroceryItem'
+    },
+    count: Number
+  }],
 });
 
 const GroceryList = mongoose.model('GroceryList', GroceryListSchema);

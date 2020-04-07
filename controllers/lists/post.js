@@ -1,14 +1,12 @@
 const GroceryList = require('../../models/GroceryList');
-const GroceryItem = require('../../models/GroceryItem');
 const to = require('await-to-js').default;
 
 module.exports = async (req, res) => {
   const {author, qrCode, items, createdAt} = req.body;
   let itemsArr = [];
-  for (let [key, item] of Object.entries(items)){
-    itemsArr.push(key);
+  for (let [key, item] of Object.entries(items)) {
+    itemsArr.push({id: key, count: item.count});
   }
-  console.log(itemsArr);
   const [createErr, createRes] = await to(GroceryList.create({
     author, qrCode, items: itemsArr, createdAt
   }));
