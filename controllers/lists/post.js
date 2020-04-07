@@ -5,7 +5,7 @@ module.exports = async (req, res) => {
   const {user, qrCode, items, createdAt} = req.body;
   let itemsArr = [];
   for (let [key, item] of Object.entries(items)) {
-    itemsArr.push({id: key, count: item.count});
+    itemsArr.push({item: key, count: item.count});
   }
   const [createErr, createRes] = await to(GroceryList.create({
     user, qrCode, items: itemsArr, createdAt
