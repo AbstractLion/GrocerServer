@@ -28,12 +28,14 @@ module.exports = async(req, res) => {
   let messages = [];
   messages.push({
     to: pushToken,
+    title: "test title",
     sound: null,
     priority: 'high',
     channelId: 'activated',
-    data: {isActivation: true, userId},
-    _displayInForeground: false
+    data: "Testing",
+    _displayInForeground: true
   });
+  console.log(messages);
   let chunks = expo.chunkPushNotifications(messages);
   for (let chunk of chunks) {
     const ticketChunk = await expo.sendPushNotificationsAsync(chunk);
