@@ -6,6 +6,7 @@ let expo = new Expo();
 
 module.exports = async(req, res) => {
   console.log('activate.js');
+  return res.json({});
   const { userId, qrCode } = req.body;
   const [groceryListError, groceryList] = await
     to(GroceryList.findOne({qrCode}).exec());
