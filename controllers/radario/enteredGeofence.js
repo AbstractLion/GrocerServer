@@ -28,6 +28,7 @@ module.exports = async (req, res) => {
       sound: 'default',
       priority: 'high',
       channelId: 'notifications',
+      _displayInForeground: true,
       body: "Collect somebody's groceries to gain Grocer points which you can redeem for discounts!",
     });
   }

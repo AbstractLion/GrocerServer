@@ -11,7 +11,10 @@ module.exports = async(req, res) => {
   if (groceryListError) return res.status(400).json(groceryListError);
   let activated = groceryList.activated;
   if (activated) {
-    return res.status(300).json({message: "Already Accepted" });
+    return res.status(300).json({
+      success: false,
+      message: "Already Accepted"
+    });
   }
   groceryList.activated = true;
   const [userError, user] = await to(User.findOneAndUpdate(
@@ -26,10 +29,10 @@ module.exports = async(req, res) => {
   messages.push({
     to: pushToken,
     sound: null,
-    priority: 'normal',
+    priority: 'high',
     channelId: 'activated',
     data: {isActivation: true, userId},
-    ios: {_displayInForeground: false}
+    _displayInForeground: false
   });
   let chunks = expo.chunkPushNotifications(messages);
   for (let chunk of chunks) {
@@ -37,5 +40,8 @@ module.exports = async(req, res) => {
     console.log(ticketChunk);
   }
 
-  return res.json({ message: "Accepted" });
+  return res.json({
+    success: true,
+    message: "Accepted"
+  });
 };
