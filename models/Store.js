@@ -10,6 +10,7 @@ const StoreSchema = new Schema({
     latitude: Number,
     longitude: Number
   },
+  id: Number
 });
 
 const Store = mongoose.model('Store', StoreSchema);

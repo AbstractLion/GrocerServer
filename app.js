@@ -39,6 +39,9 @@ app.post('/lists', postLists);
 const getStores = require('./controllers/stores/get');
 app.get('/stores', getStores);
 
+const postStores = require('./controllers/stores/post');
+app.post('/stores', postStores);
+
 const radarioEnteredGeofence = require('./controllers/radario/enteredGeofence');
 app.post('/radario/enteredGeofence', radarioEnteredGeofence);
 
