@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
     itemsArr.push({item: key, count: item.count});
   }
   const [createErr, createRes] = await to(GroceryList.create({
-    user, qrCode, items: itemsArr, createdAt, store: storeId
+    user, qrCode, items: itemsArr, createdAt, storeId
   }));
   if (createErr) return res.status(400).json(createErr);
   return res.json(createRes);
