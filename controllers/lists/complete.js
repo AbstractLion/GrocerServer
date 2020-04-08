@@ -6,8 +6,11 @@ let expo = new Expo();
 
 module.exports = async(req, res) => {
     const {qrCode} = req.body;
+    console.log(qrCode);
     const [findErr, findRes] = await to(GroceryList.findOne({qrCode}).populate('user').populate('store').exec());
+    console.log(findRes);
     if (findErr) return res.status(400).json(findErr);
+
     let user = findRes.user;
     let store = findRes.store;
     let pushToken = user.pushToken;
