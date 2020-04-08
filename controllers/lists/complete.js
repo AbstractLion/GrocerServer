@@ -7,10 +7,12 @@ let expo = new Expo();
 module.exports = async(req, res) => {
   const {qrCode} = req.body;
   console.log(qrCode);
-  const [groceryListError, groceryList] = await to(GroceryList.findById(qrCode).populate('user').exec());
+  const [groceryListError, groceryList] = await to(GroceryList.findById(qrCode).populate('user').populate('shopper').exec());
   if (groceryListError) return res.status(400).json(groceryListError);
 
   let user = groceryList.user;
+  let shopper = groceryList.shopper;
+  
   let [storeError, store] = await to(Store.findOne({id: groceryList.storeId}).exec());
   if (storeError) return res.status(400).json(storeError);
 
@@ -22,6 +24,13 @@ module.exports = async(req, res) => {
     priority: 'high',
     channelId: 'notifications',
     body: "Come retrieve your food at " + store.name,
+  });
+  
+  messages.push({
+    to: shopper.pushToken,
+    sound: null,
+    priority: 'high',
+    channelId: 'notifications'
   });
 
   let chunks = expo.chunkPushNotifications(messages);
