@@ -30,6 +30,6 @@ module.exports = async(req, res) => {
         let ticketChunk = await expo.sendPushNotificationsAsync(chunk);
     }
 
-    return res.json({ longitude: store.coords.longitude, latitude: store.coords.latitude });
+    return res.json({success: true});
 
 };
