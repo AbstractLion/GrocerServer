@@ -5,7 +5,7 @@ const {Expo} = require('expo-server-sdk');
 let expo = new Expo();
 
 module.exports = async(req, res) => {
-  const { userId, qrCode } = req.body;
+  const {userId, qrCode} = req.body;
   const [groceryListError, groceryList] = await
     to(GroceryList.findOne({qrCode}).exec());
   if (groceryListError) return res.status(400).json(groceryListError);

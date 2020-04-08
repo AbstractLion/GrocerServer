@@ -25,7 +25,10 @@ const activateList = require('./controllers/lists/activate');
 app.post('/lists/activate', activateList);
 
 const completeList = require('./controllers/lists/complete');
-app.post('/lists/complete', completeList);  
+app.post('/lists/complete', completeList);
+
+const cancelList = require('./controllers/lists/cancel');
+app.post('/lists/cancel', cancelList);
 
 const getLists = require('./controllers/lists/get');
 app.get('/lists', getLists);
