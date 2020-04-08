@@ -9,7 +9,7 @@ module.exports = async(req, res) => {
   const { userId, qrCode } = req.body;
   const [groceryListError, groceryList] = await
     to(GroceryList.findOne({qrCode}).exec());
-  if (groceryListError) return res.status(400).json(groceryListError);
+  if (groceryListError || !groceryList) return res.status(400).json(groceryListError);
   let activated = groceryList.activated;
   if (activated) {
     return res.status(300).json({message: "Already Accepted" });
