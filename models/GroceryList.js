@@ -11,10 +11,7 @@ const GroceryListSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  store: {
-    type: Schema.Types.ObjectId,
-    ref: 'Store'
-  },
+  storeId: Number,
   createdAt: Date,
   activated: {
     type: Boolean,
