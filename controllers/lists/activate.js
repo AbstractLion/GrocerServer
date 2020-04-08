@@ -32,7 +32,7 @@ module.exports = async(req, res) => {
     sound: null,
     priority: 'high',
     channelId: 'activated',
-    data: "Testing",
+    body: "testing",
     _displayInForeground: true
   });
   console.log(messages);
