@@ -51,6 +51,9 @@ app.post('/radario/exitedGeofence', radarioExitedGeofence);
 const postUser = require('./controllers/users/post');
 app.post('/users', postUser);
 
+const getAllUsers = require('./controllers/users/getAll');
+app.get('/users', getAllUsers);
+
 const getUser = require('./controllers/users/get');
 app.get('/users/:id', getUser);
 
